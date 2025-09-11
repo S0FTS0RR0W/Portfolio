@@ -1,15 +1,16 @@
 <template>
   <AsciiBlock src="/assets/ascii/project-pi-cluster.txt" />
   <AsciiBlock src="/assets/ascii/project-toshiba-trst-a10.txt" />
+
   <div class="projects">
     <NuxtLink to="/" class="back-button">← Back</NuxtLink>
 
     <h1>&lt;Projects/&gt;</h1>
-    <p class="subtitle">// A collection of my work</p>
+    <p class="subtitle">// A curated archive of technical rituals</p>
 
     <div class="project-list">
       <NuxtLink to="/projects/project1" class="project-item">
-        <h2>Toshiba TRST-A10 Recipt Print Server</h2>
+        <h2>Toshiba TRST-A10 Receipt Print Server</h2>
         <ul>
           <li>RESTful API for USB control</li>
           <li>Musical printer hacks</li>
@@ -19,13 +20,14 @@
       </NuxtLink>
 
       <NuxtLink to="/projects/project2" class="project-item">
-        <h2>Project 2</h2>
-        <p>A brief description of Project 2.</p>
+        <h2>Self help journal</h2>
+        <p>Modular journaling client with ambient feedback and persistent settings.</p>
       </NuxtLink>
 
-      <NuxtLink to="/projects/project3" class="project-item">
-        <h2>Project 3</h2>
-        <p>A brief description of Project 3.</p>
+      <NuxtLink to="https://github.com/S0FTS0RR0W/JellyDrop" class="project-item">
+        <h2>Jellydrop</h2>
+        <p>Docker-based media uploader with pastel UI and mood-aware logging.</p>
+        <a href="https://github.com/S0FTS0RR0W/JellyDrop" target="_blank" class="github-link">//JellyDrop Repo</a>
       </NuxtLink>
     </div>
   </div>
@@ -63,7 +65,7 @@ h1 {
 
 .subtitle {
   color: #8b949e;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   font-size: 1rem;
 }
 
@@ -111,6 +113,21 @@ h1 {
   color: #58a6ff;
 }
 
+/* External GitHub repo link */
+.github-link {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #58a6ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.github-link:hover {
+  color: #79c0ff;
+}
+
 /* Responsive tweaks */
 @media (max-width: 600px) {
   .projects {
@@ -130,7 +147,8 @@ h1 {
     font-size: 0.9rem;
   }
 
-  .back-button {
+  .back-button,
+  .repo-link {
     font-size: 0.95rem;
   }
 }
