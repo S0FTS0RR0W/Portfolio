@@ -27,6 +27,7 @@ export { useHead, useHeadSafe, useServerHeadSafe, useServerHead, useSeoMeta, use
 export { onBeforeRouteLeave, onBeforeRouteUpdate, useLink } from 'vue-router';
 export { withCtx, withDirectives, withKeys, withMemo, withModifiers, withScopeId, onActivated, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onDeactivated, onErrorCaptured, onMounted, onRenderTracked, onRenderTriggered, onServerPrefetch, onUnmounted, onUpdated, computed, customRef, isProxy, isReactive, isReadonly, isRef, markRaw, proxyRefs, reactive, readonly, ref, shallowReactive, shallowReadonly, shallowRef, toRaw, toRef, toRefs, triggerRef, unref, watch, watchEffect, watchPostEffect, watchSyncEffect, onWatcherCleanup, isShallow, effect, effectScope, getCurrentScope, onScopeDispose, defineComponent, defineAsyncComponent, resolveComponent, getCurrentInstance, h, inject, hasInjectionContext, nextTick, provide, mergeModels, toValue, useModel, useAttrs, useCssModule, useCssVars, useSlots, useTransitionState, useId, useTemplateRef, useShadowRoot, Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue';
 export { requestIdleCallback, cancelIdleCallback } from '#app/compat/idle-callback';
+export { setInterval } from '#app/compat/interval';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { defineLocale, extendLocale } from '../node_modules/@nuxt/ui/dist/runtime/composables/defineLocale';
 export { extractShortcuts, defineShortcuts } from '../node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts';
@@ -41,5 +42,4 @@ export { useOverlay } from '../node_modules/@nuxt/ui/dist/runtime/composables/us
 export { portalTargetInjectionKey, usePortal } from '../node_modules/@nuxt/ui/dist/runtime/composables/usePortal';
 export { useToast } from '../node_modules/@nuxt/ui/dist/runtime/composables/useToast';
 export { useColorMode } from '../node_modules/@nuxtjs/color-mode/dist/runtime/composables';
-export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
