@@ -1,0 +1,1 @@
+import{_ as t,c as s,a as o,o as r}from"./CE9my_2r.js";const n={};function c(a,e){return r(),s("div",null,[...e[0]||(e[0]=[o("h1",null,"etstetstetstetsette",-1)])])}const _=t(n,[["render",c]]);export{_ as default};
