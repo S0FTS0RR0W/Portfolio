@@ -15,6 +15,12 @@
       <p>{{ nowPlaying.artist }} — {{ nowPlaying.album }}</p>
       <span class="service">{{ nowPlaying.service }}</span>
     </div>
+    <div class="progress-container">
+  <div class="progress-bar" :style="{ width: progressPercent + '%' }"></div>
+  <div class="timestamp">
+    {{  formatTime(currentPosition) }} / {{ formatTime(nowPlaying.duration) }}
+  </div>
+</div>
   </template>
   <template v-else>
     <p class="nothing">nothing.</p>
@@ -32,6 +38,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { computed } from 'vue'
 
 const lines = [
   '$ ./start-portfolio.sh',
@@ -85,12 +92,19 @@ onMounted(() => {
 
 // 🎵 Now Playing logic
 const nowPlaying = ref(null)
+const lastFetchedAt = ref(Date.now())
+const currentPosition = computed(() => {
+  if (!nowPlaying.value || !nowPlaying.value.position || !nowPlaying.value.duration) return 0
+  const elapsed = (Date.now() - lastFetchedAt.value) / 1000
+  return Math.min(nowPlaying.value.position + elapsed, nowPlaying.value.duration)
+})
 
 async function fetchNowPlaying() {
   try {
     const res = await fetch('/nowplaying.json')
     const data = await res.json()
     nowPlaying.value = data
+    lastFetchedAt.value = Date.now()
   } catch (err) {
     nowPlaying.value = null
   }
@@ -100,6 +114,22 @@ onMounted(() => {
   fetchNowPlaying()
   setInterval(fetchNowPlaying, 5000)
 })
+
+const progressPercent = computed(() => {
+  if (!nowPlaying.value || !nowPlaying.value.duration || !nowPlaying.value.position) return 0
+
+  const elapsed = (Date.now() - lastFetchedAt.value) / 1000 // seconds since last fetch
+  const currentPosition = nowPlaying.value.position + elapsed
+
+  return Math.min((currentPosition / nowPlaying.value.duration) * 100, 100)
+})
+
+// timestamp formatting
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60)
+  const secs = Math.floor(seconds % 60)
+  return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
+}
 </script>
 
 <style scoped>
@@ -241,5 +271,27 @@ NuxtLink:hover {
   color: #8b949e;
   font-style: italic;
   margin-top: 1rem;
+}
+
+.progress-container {
+  width: 100%;
+  height: 6px;
+  background: #222;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #00f0ff, #00ffcc);
+  transition: width 0.5s ease;
+}
+
+.timestamp {
+  font-size: 0.85rem;
+  color: #8b949e;
+  margin-top: 0.5rem;
+  font-family: 'Fira Code', monospace; 
 }
 </style>

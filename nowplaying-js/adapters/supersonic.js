@@ -53,6 +53,8 @@ export async function getSupersonicTrack() {
       album: entry.album || '',
       coverArt: coverArtURL,
       timestamp: entry.created || '',
+      duration: entry.duration ?? 0,
+      position: entry.position ?? 0,
       mood: 'ambient'
     }
   } catch (err) {

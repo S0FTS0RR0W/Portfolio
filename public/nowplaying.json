@@ -1,9 +1,14 @@
 {
   "service": "Supersonic",
-  "artist": "Boards of Canada",
-  "title": "Telepath",
-  "album": "Tomorrow's Harvest",
-  "coverArt": "http://10.20.0.24:4533/rest/getCoverArt.view?u=S0FTS0RR0W&p=Gamerguy43&v=1.16.1&c=MintWaveBridge&f=json&id=O9glz8Qx9OPnTasZ60nylk",
-  "timestamp": "2025-09-08T22:55:54.9578746Z",
-  "mood": "ambient"
+  "artist": "DVRST",
+  "title": "WCGG",
+  "album": "Echoes of Childhood",
+  "coverArt": "http://10.20.0.24:4533/rest/getCoverArt.view?u=S0FTS0RR0W&p=Gamerguy43&v=1.16.1&c=MintWaveBridge&f=json&id=DWaCUJOSHaKb3jD44KTKua",
+  "timestamp": "2025-09-05T09:02:23.029498731Z",
+  "duration": 157,
+  "position": 80,
+  "mood": "ambient",
+  "progress": 0,
+  "isFresh": false,
+  "updatedAt": "2025-09-17T02:03:43.934Z"
 }
