@@ -18,7 +18,7 @@
     <div class="progress-container">
   <div class="progress-bar" :style="{ width: progressPercent + '%' }"></div>
   <div class="timestamp">
-    {{  formatTime(currentPosition) }} / {{ formatTime(nowPlaying.duration) }}
+    {{  formatTime(currentPosition.value) }} / {{ formatTime(nowPlaying.duration) }}
   </div>
 </div>
   </template>
@@ -115,14 +115,14 @@ onMounted(() => {
   setInterval(fetchNowPlaying, 5000)
 })
 
-// const progressPercent = computed(() => {
-//   if (!nowPlaying.value || !nowPlaying.value.duration || !nowPlaying.value.position) return 0
+const progressPercent = computed(() => {
+  if (!nowPlaying.value || !nowPlaying.value.duration || !nowPlaying.value.position) return 0
 
-//   const elapsed = (Date.now() - lastFetchedAt.value) / 1000 // seconds since last fetch
-//   const currentPosition = nowPlaying.value.position + elapsed
+  const elapsed = (Date.now() - lastFetchedAt.value) / 1000
+  const positionNow = nowPlaying.value.position + elapsed
 
-//   return Math.min((currentPosition / nowPlaying.value.duration) * 100, 100)
-// })
+  return Math.min((positionNow / nowPlaying.value.duration) * 100, 100)
+})
 
 // timestamp formatting
 function formatTime(seconds) {
