@@ -1,1 +1,9 @@
-{}
+{
+  "service": "Supersonic",
+  "artist": "Boards of Canada",
+  "title": "Telepath",
+  "album": "Tomorrow's Harvest",
+  "coverArt": "http://10.20.0.24:4533/rest/getCoverArt.view?u=S0FTS0RR0W&p=Gamerguy43&v=1.16.1&c=MintWaveBridge&f=json&id=O9glz8Qx9OPnTasZ60nylk",
+  "timestamp": "2025-09-08T22:55:54.9578746Z",
+  "mood": "ambient"
+}

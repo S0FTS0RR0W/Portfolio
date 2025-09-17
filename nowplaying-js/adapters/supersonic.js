@@ -28,7 +28,9 @@ export async function getSupersonicTrack() {
 
     const minutesAgo = entry.minutesAgo ?? 999
 
-    if (minutesAgo > 1) {
+    // If the track started more than 5 mins ago, consider playback paused
+
+    if (minutesAgo > 5) {
       console.log(`[Supersonic Adapter] Track is stale (${minutesAgo} minutes ago). Treating as paused.`)
       return null
     }
