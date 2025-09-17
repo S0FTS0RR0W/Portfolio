@@ -15,7 +15,7 @@ export function useNowPlaying(fetchTrack) {
 
     onMounted(() => {
         fetchNowPlaying()
-        setInterval(fetchNowPlaying, 2000) // I think it polls every 2 seconds?
+        setInterval(fetchNowPlaying, 5000) // I think it polls every 5 seconds?
     })
 
     return { nowPlaying }
