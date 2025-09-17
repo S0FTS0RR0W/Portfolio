@@ -115,14 +115,14 @@ onMounted(() => {
   setInterval(fetchNowPlaying, 5000)
 })
 
-const progressPercent = computed(() => {
-  if (!nowPlaying.value || !nowPlaying.value.duration || !nowPlaying.value.position) return 0
+// const progressPercent = computed(() => {
+//   if (!nowPlaying.value || !nowPlaying.value.duration || !nowPlaying.value.position) return 0
 
-  const elapsed = (Date.now() - lastFetchedAt.value) / 1000 // seconds since last fetch
-  const currentPosition = nowPlaying.value.position + elapsed
+//   const elapsed = (Date.now() - lastFetchedAt.value) / 1000 // seconds since last fetch
+//   const currentPosition = nowPlaying.value.position + elapsed
 
-  return Math.min((currentPosition / nowPlaying.value.duration) * 100, 100)
-})
+//   return Math.min((currentPosition / nowPlaying.value.duration) * 100, 100)
+// })
 
 // timestamp formatting
 function formatTime(seconds) {
