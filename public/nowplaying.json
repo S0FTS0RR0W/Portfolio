@@ -1,14 +1,14 @@
 {
   "service": "Supersonic",
   "artist": "Gorillaz",
-  "title": "White Flag",
+  "title": "Orchestral Intro",
   "album": "Plastic Beach",
-  "coverArt": "http://10.20.0.24:4533/rest/getCoverArt.view?u=S0FTS0RR0W&p=Gamerguy43&v=1.16.1&c=MintWaveBridge&f=json&id=9eGFpVvY81XwI5lIOUYi8U",
-  "timestamp": "2025-09-13T08:33:40.01407369Z",
-  "duration": 223,
-  "position": 52,
+  "coverArt": "http://10.20.0.24:4533/rest/getCoverArt.view?u=S0FTS0RR0W&p=Gamerguy43&v=1.16.1&c=MintWaveBridge&f=json&id=BSoYpSPB3WI1tHEezpEYcu",
+  "timestamp": "2025-09-13T08:33:40.013795177Z",
+  "duration": 69,
+  "position": 49,
   "mood": "ambient",
   "progress": 0,
   "isFresh": false,
-  "updatedAt": "2025-09-17T02:21:36.742Z"
+  "updatedAt": "2025-09-17T22:28:08.512Z"
 }

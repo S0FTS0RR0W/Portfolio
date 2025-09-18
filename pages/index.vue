@@ -8,7 +8,8 @@
     <p>// Web Dev, Programmer and Tinkerer</p>
     <p>// Currently Playing</p>
     <div class="now-playing">
-  <template v-if="nowPlaying && nowPlaying.title">
+  <transition name="fade-slide" mode="out-in">
+  <div v-if="nowPlaying && nowPlaying.title" :key="nowPlaying.title" class="now-playing">
     <img :src="nowPlaying.coverArt" alt="Album Art" class="album-art" />
     <div class="track-info">
       <h2>{{ nowPlaying.title }}</h2>
@@ -16,15 +17,16 @@
       <span class="service">{{ nowPlaying.service }}</span>
     </div>
     <div class="progress-container">
-  <div class="progress-bar" :style="{ width: progressPercent + '%' }"></div>
-  <div class="timestamp">
-    {{  formatTime(currentPosition.value) }} / {{ formatTime(nowPlaying.duration) }}
+      <div class="progress-bar" :style="{ width: animatedProgress + '%' }"></div>
+      <div class="timestamp">
+        {{ formatTime(currentPosition.value) }} / {{ formatTime(nowPlaying.duration) }}
+      </div>
+    </div>
   </div>
-</div>
-  </template>
-  <template v-else>
+  <div v-else key="nothing" class="now-playing">
     <p class="nothing">nothing.</p>
-  </template>
+  </div>
+</transition>
 </div>
     <nav>
       <NuxtLink to="/projects">&gt; View Projects</NuxtLink>
@@ -34,6 +36,12 @@
       <!-- <NuxtLink to="/deskcam">&gt; Live Print Cam</NuxtLink> -->
     </nav>
   </section>
+  <footer class="site-footer">
+  <div class="footer-content">
+    <p>&copy; 2025 Charlie @ MLP. Crafted with intention.</p>
+    <p>version - 2.0.0</p>
+  </div>
+</footer>
 </template>
 
 <script setup>
@@ -130,9 +138,50 @@ function formatTime(seconds) {
   const secs = Math.floor(seconds % 60)
   return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
 }
+
+watch(nowPlaying, (newVal, oldVal) => {
+  if (newVal?.title !== oldVal?.title) {
+    const art = document.querySelector('.album-art');
+  }
+})
+
+// animated progress bar
+const animatedProgress = ref(0)
+let progressTimer = null
+
+function updateAnimatedProgress() {
+  if (!nowPlaying.value || !nowPlaying.value.duration || !nowPlaying.value.position){
+    animatedProgress.value = 0
+    return
+  }
+  const elapsed = (Date.now() - lastFetchedAt.value) / 1000
+  const positionNow = nowPlaying.value.position + elapsed
+  animatedProgress.value = Math.min((positionNow / nowPlaying.value.duration) * 100, 100)
+}
+
+onMounted(() => {
+  progressTimer = setInterval(updateAnimatedProgress, 175)
+})
+
+import { onUnmounted } from 'vue'
+onUnmounted(() => {
+  if (progressTimer) clearInterval(progressTimer)
+})
 </script>
 
 <style scoped>
+.site-footer {
+  background-color: #0b0b13;
+  color: #ccc;
+  padding: 2px;
+  text-align: center;
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+.footer-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
 .now-playing {
   margin-top: 1rem;
   background: #161b22;
@@ -284,7 +333,9 @@ NuxtLink:hover {
 
 .progress-bar {
   height: 100%;
-  background: linear-gradient(to right, #00f0ff, #00ffcc);
+  background: linear-gradient(270deg, #00f0ff, #00ffcc, #00f0ff);
+  background-size: 600% 100%;
+  animation: shimmer 3s ease infinite;
   transition: width 0.5s ease;
 }
 
@@ -293,5 +344,38 @@ NuxtLink:hover {
   color: #8b949e;
   margin-top: 0.5rem;
   font-family: 'Fira Code', monospace; 
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-slide-enter-to,
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.album-art.pulse {
+  animation: pulseArt 0.4s ease;
+}
+
+@keyframes pulseArt {
+   0% { transform: scale(1); box-shadow: 0 0 8px rgba(88, 166, 255, 0.3); }
+  50% { transform: scale(1.05); box-shadow: 0 0 12px rgba(88, 166, 255, 0.5); }
+  100% { transform: scale(1); box-shadow: 0 0 8px rgba(88, 166, 255, 0.3); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 0%; }
+  100% { background-position: 0% 0%; }
 }
 </style>
