@@ -36,12 +36,17 @@
           </NuxtLink>
         </li>
       </ul>
+
+      <h2>$chat</h2>
+      <p>Ask me anything about my skills, rituals, or projects:</p>
+      <ChatBot />
     </div>
   </section>
 </template>
 
 <script setup>
-import AsciiBlock from '~/components/AsciiBlock.vue';
+import AsciiBlock from '~/components/AsciiBlock.vue'
+import ChatBot from '~/components/ChatBot.vue'
 
 useHead({
   title: 'About — s0fts0rr0w',

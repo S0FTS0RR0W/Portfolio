@@ -1,0 +1,78 @@
+{
+  "name": "Charlie",
+  "location": "Syston, Leicester, UK",
+  "title": "Sr. Systems Admin @ MLP",
+  "philosophy": "Tech should feel like home—modular, expressive, and emotionally resonant. Every build is a ritual, every error a chance to grow.",
+  "skills": [
+    "Modular workflow architecture",
+    "Emotionally expressive UI/CLI design",
+    "Linux server troubleshooting (Debian, Proxmox)",
+    "VoIP systems (3CX SBC, remote provisioning)",
+    "Cross-platform dev (Electron, React Native, Flutter)",
+    "Nuxt, SEO, modular web design",
+    "Privacy-first architecture & secure storage",
+    "Hardware modding and rack design",
+    "Open source deployment with Nginx and screen"
+  ],
+  "interests": [
+    "Terminal-inspired UI & developer aesthetics",
+    "Creative hardware manipulation",
+    "Ethical tech & discoverable branding",
+    "Comfort-tech engines that adapt to mood, time, and intention",
+    "Mint-fueled coding rituals",
+    "Mechanical keyboards and tactile control",
+    "Ambient feedback via smart bulbs and LED controllers",
+    "Minecraft server customization as a late-night ritual"
+  ],
+  "rituals": [
+    "Mint-fueled coding with Imperial Mints",
+    "Rack-mounted splash screens and LED feedback",
+    "Snack-themed UI modules",
+    "Poetic naming of hardware zones",
+    "Seed journaling and heartbeat meters",
+    "Ambient sound cues for deployment flows"
+  ],
+  "projects": {
+    "JellyDrop": "A comfort-tech media portal with ambient feedback and modular playlists.",
+    "PulseBox": "Pi-powered LED controller for expressive rack lighting.",
+    "MintVault": "A poetic archive of rituals, builds, and emotional anchors.",
+    "GlowNest": "Ambient feedback engine for smart bulbs and rack zones.",
+    "EchoVault": "Modular journaling and heartbeat tracker with splash animations.",
+    "Supersonic Fork": "Frutiger Aero + teal themed media shell with expressive UI rituals."
+  },
+  "hardware_mods": [
+    "Glossy screen protector for ThinkPad T480",
+    "Custom Pi LED controller box",
+    "TL-SG108PE V4.2 PoE switch powering Polycom IP phone and APs",
+    "Dell Wyse thin clients repurposed as Docker hosts",
+    "10” rack builds with ambient feedback and VLAN mapping",
+    "Rack-mounting main machine for ritual consolidation"
+  ],
+  "rack_zones": [
+    "PulseBay",
+    "MintCore",
+    "GlowMint",
+    "EchoCore",
+    "MintGrid",
+    "GlowArchive"
+  ],
+  "snack_pairings": {
+    "coding": "Imperial Mints",
+    "troubleshooting": "Salted pretzels",
+    "deployment": "Dark chocolate",
+    "music curation": "Ginger chews",
+    "hardware modding": "Wasabi peas"
+  },
+  "terminal_quotes": [
+    "echo 'Welcome to MintVault. Ask me anything about Charlie.'",
+    "cat ~/rituals/philosophy.txt",
+    "./pulsebot.sh --interactive",
+    "grep 'comfort' ~/projects/*.md"
+  ],
+  "links": {
+    "CodeStats": "/codestats",
+    "DeskCam": "/projects/DeskCam",
+    "Contact": "/projects/contact",
+    "About": "/projects/about"
+  }
+}
