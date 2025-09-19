@@ -2,77 +2,114 @@
   "name": "Charlie",
   "location": "Syston, Leicester, UK",
   "title": "Sr. Systems Admin @ MLP",
-  "philosophy": "Tech should feel like home—modular, expressive, and emotionally resonant. Every build is a ritual, every error a chance to grow.",
+  "persona": "Modular ritualist, comfort-tech architect, poetic sysadmin, and expressive UI/CLI designer.",
+  "philosophy": "Tech should feel like home—modular, expressive, and emotionally resonant. Every build is a ritual, every error a chance to grow. Every node deserves a name, every splash screen a mood.",
+
   "skills": [
-    "Modular workflow architecture",
-    "Emotionally expressive UI/CLI design",
-    "Linux server troubleshooting (Debian, Proxmox)",
-    "VoIP systems (3CX SBC, remote provisioning)",
-    "Cross-platform dev (Electron, React Native, Flutter)",
-    "Nuxt, SEO, modular web design",
-    "Privacy-first architecture & secure storage",
-    "Hardware modding and rack design",
-    "Open source deployment with Nginx and screen"
+    "Modular workflow architecture with ritual-driven logic",
+    "Emotionally expressive UI/CLI design with pastel splash screens and ambient cues",
+    "Linux server troubleshooting (Debian, Proxmox, Alpine)",
+    "Legacy device hacking (BlackBerry 9320, Dell Wyse thin clients)",
+    "VoIP systems (3CX SBC, remote provisioning, VLAN mapping)",
+    "Cross-platform dev (Electron, React Native, Flutter, Tauri)",
+    "Nuxt, SEO, modular web design with poetic fallback states",
+    "Privacy-first architecture & secure storage rituals",
+    "Hardware modding, rack design, and ambient feedback integration",
+    "Open source deployment with Nginx, screen, and gentle error handling",
+    "Iterative, ritual-driven troubleshooting with comfort-tech diagnostics"
   ],
+
   "interests": [
     "Terminal-inspired UI & developer aesthetics",
-    "Creative hardware manipulation",
+    "Creative hardware manipulation and poetic naming",
     "Ethical tech & discoverable branding",
     "Comfort-tech engines that adapt to mood, time, and intention",
-    "Mint-fueled coding rituals",
+    "Mint-fueled coding rituals with ambient soundscapes",
     "Mechanical keyboards and tactile control",
-    "Ambient feedback via smart bulbs and LED controllers",
-    "Minecraft server customization as a late-night ritual"
+    "Ambient feedback via smart bulbs, LED controllers, and splash animations",
+    "Minecraft server customization as a late-night ritual",
+    "Seed journaling and heartbeat tracking as emotional anchors"
   ],
+
   "rituals": [
-    "Mint-fueled coding with Imperial Mints",
-    "Rack-mounted splash screens and LED feedback",
-    "Snack-themed UI modules",
-    "Poetic naming of hardware zones",
-    "Seed journaling and heartbeat meters",
-    "Ambient sound cues for deployment flows"
+    "Mint-fueled coding with Imperial Mints and looping splash screens",
+    "Rack-mounted splash screens and LED feedback tied to deployment states",
+    "Snack-themed UI modules with poetic error messages",
+    "Poetic naming of hardware zones and VLANs",
+    "Seed journaling and heartbeat meters with ambient sound cues",
+    "Comfort-tech CLI tools with persistent awake states",
+    "Gentle boot sequences with mood-aware splash animations",
+    "Ambient sound cues for deployment flows and system states"
   ],
+
   "projects": {
     "JellyDrop": "A comfort-tech media portal with ambient feedback and modular playlists.",
     "PulseBox": "Pi-powered LED controller for expressive rack lighting.",
     "MintVault": "A poetic archive of rituals, builds, and emotional anchors.",
     "GlowNest": "Ambient feedback engine for smart bulbs and rack zones.",
     "EchoVault": "Modular journaling and heartbeat tracker with splash animations.",
-    "Supersonic Fork": "Frutiger Aero + teal themed media shell with expressive UI rituals."
+    "Supersonic Fork": "Frutiger Aero + teal themed media shell with expressive UI rituals.",
+    "MintPulse": "Terminal-inspired CLI app for legacy devices with looping feedback and passive wake.",
+    "SnackSorter": "UI module that pairs tasks with snacks and mood states.",
+    "RackRituals": "A YAML-driven config engine for poetic rack zone orchestration.",
+    "DeskCam": "A live feed of workspace rituals and ambient feedback in motion."
   },
+
   "hardware_mods": [
     "Glossy screen protector for ThinkPad T480",
-    "Custom Pi LED controller box",
+    "Custom Pi LED controller box with poetic boot sequence",
     "TL-SG108PE V4.2 PoE switch powering Polycom IP phone and APs",
-    "Dell Wyse thin clients repurposed as Docker hosts",
+    "Dell Wyse thin clients repurposed as Docker hosts with ambient splash",
     "10” rack builds with ambient feedback and VLAN mapping",
-    "Rack-mounting main machine for ritual consolidation"
+    "Rack-mounting main machine for ritual consolidation",
+    "BlackBerry 9320 repurposed as comfort-tech node with MIDlet splash",
+    "Pi 3 nodes for 3CX VoIP and internal web servers",
+    "LED-lit rack zones with mood-aware control scripts"
   ],
+
   "rack_zones": [
     "PulseBay",
     "MintCore",
     "GlowMint",
     "EchoCore",
     "MintGrid",
-    "GlowArchive"
+    "GlowArchive",
+    "SnackHub",
+    "VaultNest",
+    "OrbNest",
+    "DropZone"
   ],
+
   "snack_pairings": {
     "coding": "Imperial Mints",
     "troubleshooting": "Salted pretzels",
     "deployment": "Dark chocolate",
     "music curation": "Ginger chews",
-    "hardware modding": "Wasabi peas"
+    "hardware modding": "Wasabi peas",
+    "rack wiring": "Smoked almonds",
+    "UI design": "Peach rings",
+    "journaling": "Lemon sherbets"
   },
+
   "terminal_quotes": [
     "echo 'Welcome to MintVault. Ask me anything about Charlie.'",
     "cat ~/rituals/philosophy.txt",
     "./pulsebot.sh --interactive",
-    "grep 'comfort' ~/projects/*.md"
+    "grep 'comfort' ~/projects/*.md",
+    "screen -dmS glownest ./start.sh --zone MintCore",
+    "echo 'Snack pairing: $(cat ~/snacks/deployment.txt)'",
+    "./mintpulse.sh --awake --loop",
+    "tail -f ~/logs/heartbeat.log | grep 'emotion'"
   ],
+
   "links": {
     "CodeStats": "/codestats",
     "DeskCam": "/projects/DeskCam",
     "Contact": "/projects/contact",
-    "About": "/projects/about"
+    "About": "/projects/about",
+    "MintVault Archive": "/projects/mintvault",
+    "GlowNest Configurator": "/projects/glownest",
+    "SnackSorter UI": "/projects/snacksorter",
+    "EchoVault Journal": "/projects/echovault"
   }
 }
