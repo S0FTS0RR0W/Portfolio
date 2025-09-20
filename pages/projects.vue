@@ -1,155 +1,75 @@
 <template>
-  <AsciiBlock src="/assets/ascii/project-pi-cluster.txt" />
-  <AsciiBlock src="/assets/ascii/project-toshiba-trst-a10.txt" />
-
-  <div class="projects">
-    <NuxtLink to="/" class="back-button">← Back</NuxtLink>
-
-    <h1>&lt;Projects/&gt;</h1>
-    <p class="subtitle">// A curated archive of technical rituals</p>
-
-    <div class="project-list">
-      <NuxtLink to="/projects/project1" class="project-item">
-        <h2>Toshiba TRST-A10 Receipt Print Server</h2>
-        <ul>
-          <li>RESTful API for USB control</li>
-          <li>Musical printer hacks</li>
-          <li>Pi-based deployment</li>
-          <li>Dependency troubleshooting</li>
-        </ul>
-      </NuxtLink>
-
-      <NuxtLink to="/projects/project2" class="project-item">
-        <h2>Self help journal</h2>
-        <p>Modular journaling client with ambient feedback and persistent settings.</p>
-      </NuxtLink>
-
-      <NuxtLink to="https://github.com/S0FTS0RR0W/JellyDrop" class="project-item">
-        <h2>Jellydrop</h2>
-        <p>Docker-based media uploader with pastel UI and mood-aware logging.</p>
-        <a href="https://github.com/S0FTS0RR0W/JellyDrop" target="_blank" class="github-link">//JellyDrop Repo</a>
-      </NuxtLink>
+  <section class="repo-gallery">
+  <h2>&lt;My GitHub Repositories/&gt;</h2>
+  <div class="repo-grid">
+    <div v-for="repo in repos" :key="repo.id" class="repo-card">
+      <h3><a :href="repo.html_url" target="_blank">{{ repo.name }}</a></h3>
+      <p>{{ repo.description || 'No description yet' }}</p>
+      <span class="language">{{ repo.language || 'Unknown' }}</span>
+      <span class="updated">Last updated: {{ new Date(repo.updated_at).toLocaleDateString() }}</span>
     </div>
   </div>
+</section>
 </template>
 
+<script setup>
+import {ref, onMounted } from 'vue'
+
+const repos = ref([])
+
+onMounted(async () => {
+  try {
+    const res = await fetch('https://api.github.com/users/S0FTS0RR0W/repos')
+    const data = await res.json()
+    repos.value = data.filter(repo => !repo.fork)
+  } catch (err) {
+    console.error('Failed to fetch repos:', err)
+  }
+})
+</script>
+
 <style scoped>
-.projects {
-  font-family: 'Fira Code', monospace;
-  background-color: #0d1117;
+.repo-gallery {
+  padding: 2rem;
+  background: #0d1117;
   color: #c9d1d9;
-  padding: 1.5rem;
-  min-height: 100vh;
-  box-sizing: border-box;
+  font-family: 'Fira Code', monospace;
 }
 
-.back-button {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  color: #58a6ff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: color 0.2s ease;
-}
-
-.back-button:hover {
-  color: #79c0ff;
-}
-
-h1 {
-  color: #58a6ff;
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  color: #8b949e;
-  margin-bottom: 1.25rem;
-  font-size: 1rem;
-}
-
-.project-list {
-  display: flex;
-  flex-direction: column;
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-.project-item {
-  background-color: #161b22;
-  padding: 1.25rem;
+.repo-card {
+  background: #161b22;
+  border: 1px solid #21262c;
+  padding: 1rem;
   border-radius: 8px;
-  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 8px rgba(20, 20, 20, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.repo-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: #238636;
+}
+
+.repo-card h3 a {
+  color: #58a6ff;
   text-decoration: none;
-  color: inherit;
-  border: 1px solid #30363d;
 }
 
-.project-item:hover {
-  background-color: #21262d;
-}
-
-.project-item h2 {
-  color: #79c0ff;
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-}
-
-.project-item p,
-.project-item ul {
+.repo-card p {
   color: #8b949e;
-  margin: 0;
-  line-height: 1.6;
-  font-size: 0.95rem;
+  margin: 0.5rem 0;
 }
 
-.project-item ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.project-item li::before {
-  content: "▸ ";
-  color: #58a6ff;
-}
-
-/* External GitHub repo link */
-.github-link {
+.language, .updated {
+  font-size: 0.8rem;
+  color: #8b949e;
   display: block;
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #58a6ff;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.github-link:hover {
-  color: #79c0ff;
-}
-
-/* Responsive tweaks */
-@media (max-width: 600px) {
-  .projects {
-    padding: 1rem;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  .project-item h2 {
-    font-size: 1.1rem;
-  }
-
-  .project-item p,
-  .project-item ul {
-    font-size: 0.9rem;
-  }
-
-  .back-button,
-  .repo-link {
-    font-size: 0.95rem;
-  }
+  margin-top: 0.25rem;
 }
 </style>
