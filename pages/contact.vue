@@ -1,34 +1,36 @@
 <template>
   <div class="contact-page">
-    <NuxtLink to="/" class="back-button">← Back</NuxtLink>
+    <NuxtLink to="/" class="back-button">
+      ← cd ..<span class="cursor">|</span>
+    </NuxtLink>
     <h1>&lt;Contact/&gt;</h1>
     <p class="subtitle">// Reach out to me</p>
     <div class="contact-content">
       <p>If you want to contact me, fill out the form below and I'll reply as soon as possible.</p>
       <form @submit.prevent="handleSubmit" class="cli-form">
-        <label>> name:</label>
-        <input type="text" v-model="form.name" name="name" required />
-        <label>> email:</label>
-        <input type="email" v-model="form.email" name="email" required />
-        <label>> message:</label>
-        <textarea v-model="form.message" name="message" rows="5" required></textarea>
+      <label for="name">&gt; name:</label>
+      <input type="text" v-model="form.name" name="name" id="name" required aria-label="Name" />
+      <label for="email">&gt; email:</label>
+      <input type="email" v-model="form.email" name="email" id="email" required aria-label="Email" />
+      <label for="message">&gt; message:</label>
+      <textarea v-model="form.message" name="message" id="message" rows="5" required aria-label="Message"></textarea>
         <!-- Cloudflare Turnstile widget -->
-        <div id="turnstile-widget" style="margin-bottom: 1rem;"></div>
-        <button type="submit">&gt; send</button>
+  <div id="turnstile-widget" style="margin-bottom: 1rem;"></div>
+  <button type="submit">&gt; send</button>
       </form>
       <div class="terminal-output">
         <p v-if="status === 'sending'">&gt; Sending message<span class="blink">...</span></p>
         <p v-if="status === 'success'">
           &gt; <span>{{ typedMessage }}<span v-if="showCursor" class="blink-cursor">|</span></span>
         </p>
-        <p v-if="status === 'error'">&gt; Error sending message. Try again later.</p>
+        <p v-if="status === 'error'">&gt; {{ errorMessage }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, nextTick } from 'vue'
 
 const form = ref({ name: '', email: '', message: '' })
 const status = ref('')
@@ -36,8 +38,24 @@ const fullMessage = "Message sent successfully. I'll be in touch.";
 const typedMessage = ref("");
 const showCursor = ref(true);
 let cursorInterval;
+const errorMessage = ref('Error sending message. Try again later.');
 
 const turnstileToken = ref('');
+let turnstileWidgetId = null;
+
+function renderTurnstile() {
+  // Remove previous widget if exists
+  const widgetDiv = document.getElementById('turnstile-widget');
+  if (widgetDiv) widgetDiv.innerHTML = '';
+  if (window.turnstile) {
+    turnstileWidgetId = window.turnstile.render('#turnstile-widget', {
+      sitekey: '0x4AAAAAABtrg3rKDg2sCUGL',
+      callback: (token) => {
+        turnstileToken.value = token;
+      },
+    });
+  }
+}
 
 onMounted(() => {
   if (!document.getElementById('cf-turnstile-script')) {
@@ -47,15 +65,10 @@ onMounted(() => {
     script.async = true;
     document.body.appendChild(script);
     script.onload = () => {
-      if (window.turnstile) {
-        window.turnstile.render('#turnstile-widget', {
-          sitekey: '0x4AAAAAABtrg3rKDg2sCUGL', // Replace with your actual site key
-          callback: (token) => {
-            turnstileToken.value = token;
-          },
-        });
-      }
+      renderTurnstile();
     };
+  } else {
+    nextTick(() => renderTurnstile());
   }
 });
 
@@ -74,6 +87,11 @@ watch(status, (val) => {
         }, 500);
       }
     }, 30);
+    // Reset form
+    form.value = { name: '', email: '', message: '' };
+    // Reset Turnstile
+    nextTick(() => renderTurnstile());
+    turnstileToken.value = '';
   } else {
     showCursor.value = false;
     clearInterval(cursorInterval);
@@ -81,7 +99,12 @@ watch(status, (val) => {
 });
 
 const handleSubmit = async () => {
-  status.value = 'sending'
+  if (!turnstileToken.value) {
+    errorMessage.value = 'Please complete the CAPTCHA.';
+    status.value = 'error';
+    return;
+  }
+  status.value = 'sending';
   try {
     const res = await fetch('https://formspree.io/f/xdkdroqz', {
       method: 'POST',
@@ -90,10 +113,17 @@ const handleSubmit = async () => {
         ...form.value,
         turnstile_token: turnstileToken.value,
       }),
-    })
-    status.value = res.ok ? 'success' : 'error'
+    });
+    if (res.ok) {
+      status.value = 'success';
+      errorMessage.value = '';
+    } else {
+      errorMessage.value = 'Error sending message. Try again later.';
+      status.value = 'error';
+    }
   } catch {
-    status.value = 'error'
+    errorMessage.value = 'Error sending message. Try again later.';
+    status.value = 'error';
   }
 }
 </script>
@@ -159,11 +189,15 @@ h1 {
   margin-top: 1rem;
   color: #58a6ff;
 }
-.blink {
-  animation: blink 1s step-end infinite;
+/* Fix typo and remove duplicate keyframes */
+.cursor {
+  animation: blink-cursor 1s steps(2, start) infinite;
+  margin-left: 4px;
 }
-@keyframes blink {
-  50% { opacity: 0; }
+
+@keyframes blink-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 @media (max-width: 600px) {
   .contact-page {
@@ -178,10 +212,6 @@ h1 {
 .blink-cursor {
   display: inline-block;
   width: 1ch;
-  animation: blink 1s steps(1) infinite;
-}
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  animation: blink-cursor 1s steps(1) infinite;
 }
 </style>

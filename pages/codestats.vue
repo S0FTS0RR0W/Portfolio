@@ -8,7 +8,7 @@
     </div>
 
     <div class="terminal-body">
-      <NuxtLink to="/" class="back-button">← cd ..</NuxtLink>
+  <NuxtLink to="/" class="back-button">← cd ..<span class="cursor-blink">|</span></NuxtLink>
       <p class="cli-line">// Most Used Languages</p>
       <ClientOnly>
         <Pie :data="chartData" :options="chartOptions" />
@@ -132,5 +132,17 @@ canvas {
 
 .back-button:hover {
   color: #79c0ff;
+}
+
+.cursor-blink {
+  display: inline-block;
+  margin-left: 4px;
+  width: 1ch;
+  animation: blink-cursor 1s steps(1) infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 </style>

@@ -31,7 +31,7 @@
       <h2>$links</h2>
       <ul>
         <li>
-          🧮 <NuxtLink to="/codestats" target="_blank" rel="noopener" class="external-link">
+          <NuxtLink to="/codestats" target="_blank" rel="noopener" class="external-link">
             Code::Stats profile
           </NuxtLink>
         </li>
