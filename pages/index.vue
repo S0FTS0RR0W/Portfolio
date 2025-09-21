@@ -40,6 +40,16 @@
   <div class="footer-content">
     <p>&copy; 2025 Charlie @ MLP. Crafted with intention.</p>
     <p>version - 2.0.0</p>
+    <p>
+      <a
+        href="https://github.com/S0FTS0RR0W"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="github-link"
+      >
+        &gt; GitHub: S0FTS0RR0W
+      </a>
+    </p>
   </div>
 </footer>
 </template>
@@ -377,5 +387,17 @@ NuxtLink:hover {
   0% { background-position: 0% 0%; }
   50% { background-position: 100% 0%; }
   100% { background-position: 0% 0%; }
+}
+
+.github-link {
+  color: #58a6ff;
+  text-decoration: none;
+  font-family: 'Fira Code', monospace;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.github-link:hover {
+  color: #79c0ff;
+  transform: translateY(-1px);
 }
 </style>
