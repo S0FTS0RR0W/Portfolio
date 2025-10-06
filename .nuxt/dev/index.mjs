@@ -25,7 +25,7 @@ import { toRouteMatcher, createRouter } from 'file://C:/Users/chrls/Documents/Po
 import { readFile } from 'node:fs/promises';
 import consola, { consola as consola$1 } from 'file://C:/Users/chrls/Documents/Portfolio/node_modules/consola/dist/index.mjs';
 import { ErrorParser } from 'file://C:/Users/chrls/Documents/Portfolio/node_modules/youch-core/build/index.js';
-import { Youch } from 'file://C:/Users/chrls/Documents/Portfolio/node_modules/nitropack/node_modules/youch/build/index.js';
+import { Youch } from 'file://C:/Users/chrls/Documents/Portfolio/node_modules/youch/build/index.js';
 import { SourceMapConsumer } from 'file://C:/Users/chrls/Documents/Portfolio/node_modules/source-map/source-map.js';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { getContext } from 'file://C:/Users/chrls/Documents/Portfolio/node_modules/unctx/dist/index.mjs';
@@ -1835,7 +1835,7 @@ function replaceIslandTeleports(ssrContext, html) {
   return html;
 }
 
-const ISLAND_SUFFIX_RE = /\.json(\?.*)?$/;
+const ISLAND_SUFFIX_RE = /\.json(?:\?.*)?$/;
 const _SxA8c9 = defineEventHandler(async (event) => {
   const nitroApp = useNitroApp();
   setResponseHeaders(event, {
@@ -1995,7 +1995,10 @@ function createNitroApp() {
     preemptive: true
   });
   const nodeHandler = toNodeListener(h3App);
-  const localCall = (aRequest) => callNodeRequestHandler(nodeHandler, aRequest);
+  const localCall = (aRequest) => callNodeRequestHandler(
+    nodeHandler,
+    aRequest
+  );
   const localFetch = (input, init) => {
     if (!input.toString().startsWith("/")) {
       return globalThis.fetch(input, init);
@@ -2357,7 +2360,14 @@ const renderer = defineRenderHandler(async (event) => {
   };
 });
 function normalizeChunks(chunks) {
-  return chunks.filter(Boolean).map((i) => i.trim());
+  const result = [];
+  for (const _chunk of chunks) {
+    const chunk = _chunk?.trim();
+    if (chunk) {
+      result.push(chunk);
+    }
+  }
+  return result;
 }
 function joinTags(tags) {
   return tags.join("");
