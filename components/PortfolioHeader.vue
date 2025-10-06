@@ -1,13 +1,29 @@
 <template>
   <header class="portfolio-header">
-    <div class="name">Charlie</div>
+    <div class="name">
+      <Icon icon="mdi:account-circle" width="24" />
+      Charlie
+    </div>
     <nav class="nav-links">
-      <NuxtLink to="/projects">Projects</NuxtLink>
-      <NuxtLink to="/about">About</NuxtLink>
-      <NuxtLink to="/contact">Contact</NuxtLink>
+      <NuxtLink to="/projects">
+        <Icon icon="mdi:briefcase-outline" width="20" />
+        Projects
+      </NuxtLink>
+      <NuxtLink to="/about">
+        <Icon icon="mdi:information-outline" width="20" />
+        About
+      </NuxtLink>
+      <NuxtLink to="/contact">
+        <Icon icon="mdi:email-outline" width="20" />
+        Contact
+      </NuxtLink>
     </nav>
   </header>
 </template>
+
+<script setup>
+import { Icon } from '@iconify/vue'
+</script>
 
 <style scoped>
 .portfolio-header {
@@ -22,6 +38,9 @@
 }
 
 .name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.4rem;
   font-weight: bold;
   color: #58a6ff;
@@ -33,6 +52,9 @@
 }
 
 .nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
   font-weight: 500;
   color: #c9d1d9;
