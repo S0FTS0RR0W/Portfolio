@@ -15,6 +15,7 @@ type LazyComponent<T> = (T & DefineComponent<HydrationStrategies, {}, {}, {}, {}
 
 interface _GlobalComponents {
       'AsciiBlock': typeof import("../../components/AsciiBlock.vue")['default']
+    'BurgerMenu': typeof import("../../components/BurgerMenu.vue")['default']
     'ChatBot': typeof import("../../components/ChatBot.vue")['default']
     'PortfolioHeader': typeof import("../../components/PortfolioHeader.vue")['default']
     'UAccordion': typeof import("../../node_modules/@nuxt/ui/dist/runtime/components/Accordion.vue")['default']
@@ -103,6 +104,7 @@ interface _GlobalComponents {
     'NuxtIsland': typeof import("../../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': typeof import("../../node_modules/nuxt/dist/app/components/server-placeholder")['default']
       'LazyAsciiBlock': LazyComponent<typeof import("../../components/AsciiBlock.vue")['default']>
+    'LazyBurgerMenu': LazyComponent<typeof import("../../components/BurgerMenu.vue")['default']>
     'LazyChatBot': LazyComponent<typeof import("../../components/ChatBot.vue")['default']>
     'LazyPortfolioHeader': LazyComponent<typeof import("../../components/PortfolioHeader.vue")['default']>
     'LazyUAccordion': LazyComponent<typeof import("../../node_modules/@nuxt/ui/dist/runtime/components/Accordion.vue")['default']>

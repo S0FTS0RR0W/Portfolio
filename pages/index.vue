@@ -28,13 +28,13 @@
   </div>
 </transition>
 </div>
-    <nav>
+    <!-- <nav>
       <NuxtLink to="/projects">&gt; View Projects</NuxtLink>
       <NuxtLink to="/about">&gt; About Me</NuxtLink>
       <NuxtLink to="/contact">&gt; Contact</NuxtLink>
       <NuxtLink to="/codestats">&gt; Code::Stats</NuxtLink>
-      <!-- <NuxtLink to="/deskcam">&gt; Live Print Cam</NuxtLink> -->
-    </nav>
+      <NuxtLink to="/deskcam">&gt; Live Print Cam</NuxtLink> -->
+    <!-- </nav> -->
   </section>
   <footer class="site-footer">
   <div class="footer-content">
@@ -228,14 +228,13 @@ onUnmounted(() => {
 }
 .welcome {
   font-family: 'Fira Code', monospace;
-  padding: 2rem;
   background: #0d1117;
   color: #c9d1d9;
-  min-height: 100vh;
+  min-height: calc(100vh - 60px); /* subtract header height if needed */
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  padding-top: 2rem; /* add spacing instead of centering */
   box-sizing: border-box;
 }
 
@@ -264,13 +263,13 @@ h1 {
   color: #58a6ff;
 }
 
-nav {
+/* nav {
   margin-top: 2rem;
   display: flex;
   gap: 1.5rem;
-}
+} */
 
-nav a {
+/* nav a {
   background: #161b22;
   color: #58a6ff;
   padding: 0.75rem 1.5rem;
@@ -280,7 +279,7 @@ nav a {
   box-shadow: 0 2px 8px rgba(20, 20, 20, 0.1);
   transition: background 0.2s, color 0.2s, transform 0.2s;
   border: 1px solid #21262c;
-}
+} */
 
 nav a:hover {
   background: #238636;
