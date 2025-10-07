@@ -3,7 +3,7 @@
     <!-- Left: Name -->
     <div class="name">
       <Icon icon="mdi:account-circle" width="24" />
-      Charlie
+      S0FTS0RR0W
     </div>
 
     <!-- Center: Desktop Navigation -->
