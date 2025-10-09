@@ -47,7 +47,18 @@
         rel="noopener noreferrer"
         class="github-link"
       >
-        &gt; GitHub: S0FTS0RR0W
+        <Icon icon="line-md:github-loop" width="25" />
+        GitHub: S0FTS0RR0W
+      </a>
+      <br />
+      <a
+        href="https://www.reddit.com/user/UnreliableNetwork/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="reddit-link"
+      >
+        <Icon icon="line-md:reddit-loop" width="25" />
+        Reddit: UnreliableNetwork
       </a>
     </p>
   </div>
@@ -57,6 +68,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { computed } from 'vue'
+import { Icon } from '@iconify/vue'
 
 const lines = [
   '$ ./start-portfolio.sh',
@@ -396,6 +408,18 @@ NuxtLink:hover {
 }
 
 .github-link:hover {
+  color: #79c0ff;
+  transform: translateY(-1px);
+}
+
+.reddit-link {
+  color: #58a6ff;
+  text-decoration: none;
+  font-family: 'Fira Code', monospace;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.reddit-link:hover {
   color: #79c0ff;
   transform: translateY(-1px);
 }

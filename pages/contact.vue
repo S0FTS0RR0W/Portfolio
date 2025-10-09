@@ -158,7 +158,7 @@ h1 {
   margin-bottom: 2rem;
 }
 .contact-content {
-  background: #161b22;
+  background: linear-gradient(105deg, #58a6ff8f, #30363d);
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 2px 16px rgba(0,0,0,0.2);

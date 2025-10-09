@@ -9,19 +9,19 @@
     <!-- Center: Desktop Navigation -->
     <nav class="nav-links desktop-only">
       <NuxtLink to="/projects">
-        <Icon icon="mdi:briefcase-outline" width="20" />
+        <Icon icon="line-md:briefcase" width="20" />
         Projects
       </NuxtLink>
       <NuxtLink to="/about">
-        <Icon icon="mdi:information-outline" width="20" />
+        <Icon icon="akar-icons:info-fill" width="20" />
         About
       </NuxtLink>
       <NuxtLink to="/contact">
-        <Icon icon="mdi:email-outline" width="20" />
+        <Icon icon="line-md:phone-call-loop" width="20" />
         Contact
       </NuxtLink>
       <NuxtLink to="/codestats">
-        <Icon icon="mdi:code-block-parentheses" width="20" />
+        <Icon icon="line-md:cloud-alt-braces-loop" width="20" />
         Code::Stats
       </NuxtLink>
     </nav>
