@@ -89,7 +89,7 @@ export default function GitCommits() {
     if (error) return <div style={{ color: 'red' }}>Error: {error}</div>;
 
     return (
-        <div style={{ width: '600px', height: '400px' }}>
+        <div style={{ width: '600px', height: '400px', padding: '50px' }}>
             <h2>Github Commits (by Month)</h2>
             <canvas ref={canvasRef}></canvas>
         </div>
