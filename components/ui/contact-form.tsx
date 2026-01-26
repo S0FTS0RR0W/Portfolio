@@ -37,7 +37,7 @@ export default function ContactForm() {
             id="name"
             name="name"
             type="text"
-            placeholder="Your Name"
+            placeholder="UID"
             required
             value={formData.name}
             onChange={handleChange}
@@ -52,7 +52,7 @@ export default function ContactForm() {
             id="email"
             name="email"
             type="email"
-            placeholder="m@example.com"
+            placeholder="you@example.com"
             required
             value={formData.email}
             onChange={handleChange}
@@ -66,7 +66,7 @@ export default function ContactForm() {
           <textarea
             id="message"
             name="message"
-            placeholder="Your message..."
+            placeholder="What's on Your Mind?"
             required
             value={formData.message}
             onChange={handleChange}
