@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
     const apiKey = process.env.WAKATIME_API_KEY;
+
+    // Update every 30s
+    
     
     console.log('API Key present:', !!apiKey);
     
