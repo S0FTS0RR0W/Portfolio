@@ -2,7 +2,7 @@ import useDownloader from 'react-use-downloader';
 import { Button } from '@/components/ui/button';
 
 export default function DownloadCV() {
-    const { size, elapsed, percentage, download, cancel, error, isInProgress } =
+    const { size, elapsed, percentage, download, isInProgress } =
     useDownloader();
 
     const fileUrl = '@/CV.pdf';
@@ -10,7 +10,7 @@ export default function DownloadCV() {
     
     return (
         <div className="">
-            <Button className=''>Download CV</Button>
+            <Button className='' onClick={() => download(fileUrl, fileName)}>Download CV</Button>
             {isInProgress && (
                 <div className="mt-2">
                     <p>Download Progress: {percentage.toFixed(2)}%</p>
