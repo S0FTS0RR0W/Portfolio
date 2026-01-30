@@ -21,10 +21,10 @@ export default function PDFViewerClient({ fileUrl }: { fileUrl: string }) {
     return (
         <div className="flex flex-col items-center">
             <Document 
-                file={fileUrl} 
+                file={'./CV.pdf'}
                 onLoadSuccess={onDocumentLoadSuccess}
                 options={options}
-                onLoadError={(error) => console.error('Error loading PDF:', error)}
+                onLoadError={(error) => console.log('Error loading PDF:', error)}
             >
                 <Page 
                     pageNumber={pageNumber} 
