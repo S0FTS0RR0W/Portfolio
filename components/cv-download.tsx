@@ -18,7 +18,6 @@ export default function DownloadCV() {
                     <p>File Size: {size.toFixed(2)} bytes</p>
                 </div>
             )}
-            {error && <div className="mt-2 text-red-500">{error}</div>}
         </div>
     )
 }
