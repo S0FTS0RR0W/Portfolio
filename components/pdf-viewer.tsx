@@ -10,7 +10,7 @@ const options = {
     cMapPacked: true,
 };
 
-export default function PDFViewerClient({ fileUrl }: { fileUrl: string }) {
+export default function PDFViewerClient({}: { fileUrl: string }) {
     const [numPages, setNumPages] = useState<number>();
     const [pageNumber, setPageNumber] = useState<number>(1);
 
