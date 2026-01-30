@@ -5,7 +5,7 @@ export default function DownloadCV() {
     const { size, elapsed, percentage, download, isInProgress } =
     useDownloader();
 
-    const fileUrl = '@/CV.pdf';
+    const fileUrl = '/CV.pdf';
     const fileName = 'CV.pdf';
     
     return (

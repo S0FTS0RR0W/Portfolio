@@ -1,4 +1,10 @@
-import PDFViewerClient from '../../components/pdf-viewer';
+'use client'
+
+import dynamic from 'next/dynamic';
+
+const PDFViewerClient = dynamic(() => import('../../components/pdf-viewer'), {
+    ssr: false,
+});
 
 export default function PDF() {
     return (

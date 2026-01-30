@@ -1,8 +1,14 @@
 'use client'
+
 import { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+
+const options = {
+    cMapUrl: `https://unpkg.com/pdfjs-dist@${pdfjs.version}/cmaps/`,
+    cMapPacked: true,
+};
 
 export default function PDFViewerClient({ fileUrl }: { fileUrl: string }) {
     const [numPages, setNumPages] = useState<number>();
@@ -14,7 +20,12 @@ export default function PDFViewerClient({ fileUrl }: { fileUrl: string }) {
 
     return (
         <div className="flex flex-col items-center">
-            <Document file={fileUrl} onLoadSuccess={onDocumentLoadSuccess}>
+            <Document 
+                file={fileUrl} 
+                onLoadSuccess={onDocumentLoadSuccess}
+                options={options}
+                onLoadError={(error) => console.error('Error loading PDF:', error)}
+            >
                 <Page 
                     pageNumber={pageNumber} 
                     renderTextLayer={false} 
