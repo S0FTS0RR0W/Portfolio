@@ -25,6 +25,10 @@ export function NavigationMenu() {
           <Link href="/activity">Activity</Link>
           <div className="bg-teal-500 h-0.5 w-0 group-hover:w-full transition-all duration-500"></div>
         </li>
+        <li className="group">
+          <Link href="cv">CV</Link>
+          <div className="bg-teal-500 h-0.5 w-0 group-hover:w-full transition-all duration-500"></div>
+        </li>
       </ul>
       <ModeToggle />
     </nav>
