@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { NavigationMenu } from "@/components/ui/navigation-menu";
+import BurgerMenu from '@/components/ui/burger-menu';
 
 
 const geistSans = Geist({
@@ -36,6 +37,7 @@ export default function RootLayout({
         enableSystem
       >
         <NavigationMenu />
+        <BurgerMenu />
         <main className="flex-1">
         {children}
         </main>

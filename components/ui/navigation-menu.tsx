@@ -3,7 +3,7 @@ import { ModeToggle } from '@/components/mode-toggle';
 
 export function NavigationMenu() {
   return (
-    <nav className="flex items-center justify-between gap-3 p-4 font-mono">
+    <nav className="hidden md:flex items-center justify-between gap-3 p-4 font-mono">
       <ul className="flex gap-4">
         <li className="group">
           <Link href="/">Home</Link>
