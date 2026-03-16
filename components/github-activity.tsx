@@ -59,7 +59,7 @@ export default function GitCommits() {
                     {
                         label: 'Commits (by Month)',
                         data: data,
-                        backgroundColor: gradient as any,
+                        backgroundColor: gradient as CanvasGradient,
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1,
                     },
