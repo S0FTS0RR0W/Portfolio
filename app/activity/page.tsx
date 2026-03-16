@@ -1,5 +1,6 @@
 import WakatimeStats from "@/components/wakatime-stats";
 import GitCommits from "@/components/github-activity";
+import GitHubChart from "@/components/github-chart";
 
 export default function Activity() {
     return (
@@ -9,6 +10,9 @@ export default function Activity() {
             </div>
             <div className="flex flex-col items-center justify-center gap-4">
             <GitCommits />
+            </div>
+            <div className="flex flex-col items-center justify-center gap-3">
+            <GitHubChart />
             </div>
         </main>
     )
