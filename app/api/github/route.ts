@@ -88,17 +88,47 @@ export async function GET() {
             return new NextResponse('Failed to fetch contribution data', { status: 500 });
         }
 
-        // 3. Aggregate by month
+        // 3. Aggregate by month and collect daily points for heatmap rendering
         const contributionsByMonth: Record<string, number> = {};
+        const dailyContributions: { date: string; count: number }[] = [];
+        const yearsMeta: {
+            year: string;
+            total: number;
+            range: { start: string; end: string };
+        }[] = [];
 
         for (const year of years) {
             const yearData = contributionsData.data.user[`year${year}`];
             if (yearData) {
+                let yearTotal = 0;
+                let yearStart = '';
+                let yearEnd = '';
+
                 for (const week of yearData.contributionCalendar.weeks) {
                     for (const day of week.contributionDays) {
                         const month = day.date.substring(0, 7); // YYYY-MM
                         contributionsByMonth[month] = (contributionsByMonth[month] || 0) + day.contributionCount;
+
+                        dailyContributions.push({
+                            date: day.date,
+                            count: day.contributionCount,
+                        });
+
+                        yearTotal += day.contributionCount;
+                        if (!yearStart || day.date < yearStart) yearStart = day.date;
+                        if (!yearEnd || day.date > yearEnd) yearEnd = day.date;
                     }
+                }
+
+                if (yearStart && yearEnd) {
+                    yearsMeta.push({
+                        year: String(year),
+                        total: yearTotal,
+                        range: {
+                            start: yearStart,
+                            end: yearEnd,
+                        },
+                    });
                 }
             }
         }
@@ -110,7 +140,28 @@ export async function GET() {
             }))
             .sort((a, b) => a.date.localeCompare(b.date));
 
-        return NextResponse.json({ data });
+        const sortedDailyContributions = dailyContributions.sort((a, b) => b.date.localeCompare(a.date));
+        const maxDailyCount = Math.max(...sortedDailyContributions.map((entry) => entry.count), 1);
+        const intensityPalette = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'];
+
+        const heatmapData = {
+            years: yearsMeta.sort((a, b) => a.year.localeCompare(b.year)),
+            contributions: sortedDailyContributions.map((entry) => {
+                const intensity =
+                    entry.count === 0
+                        ? 0
+                        : Math.min(4, Math.max(1, Math.ceil((entry.count / maxDailyCount) * 4)));
+
+                return {
+                    date: entry.date,
+                    count: entry.count,
+                    color: intensityPalette[intensity],
+                    intensity,
+                };
+            }),
+        };
+
+        return NextResponse.json({ data, heatmapData });
 
     } catch (error) {
         console.error('Fetch error:', error);
