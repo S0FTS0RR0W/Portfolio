@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { motion, type Variants } from 'motion/react';
+import { motion, type Variants } from "motion/react";
+import * as React from "react";
 
 import {
   getVariants,
-  useAnimateIconContext,
-  IconWrapper,
   type IconProps,
-} from '@/components/animate-ui/icons/icon';
+  IconWrapper,
+  useAnimateIconContext,
+} from "@/components/animate-ui/icons/icon";
 
 type SunProps = IconProps<keyof typeof animations>;
 
@@ -26,7 +26,7 @@ const animations = {
           pathLength: [0, 1],
           transition: {
             duration: 0.6,
-            ease: 'easeInOut',
+            ease: "easeInOut",
             delay: (i - 1) * 0.15,
           },
         },

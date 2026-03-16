@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { ModeToggle } from '@/components/mode-toggle';
+import Link from "next/link";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export function NavigationMenu() {
   return (
@@ -32,5 +32,5 @@ export function NavigationMenu() {
       </ul>
       <ModeToggle />
     </nav>
-  )
+  );
 }

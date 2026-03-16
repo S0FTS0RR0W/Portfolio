@@ -1,16 +1,20 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const typedSequence = ["Programmer", "Designer", "Developer", "Freelancer"];
 const typingSpeed = 100;
 const deleteSpeed = 50;
 const pauseTime = 2000;
 
-const Status = ["Status: Fixing my Broken Ass Arch Linux Install", "Status: Chewing Ass and Kicking Vim", "Status: Centering a Div (Send Help)", "Status: Watching YouTube Tutorials on How to Program for Beginners"
-]
+const Status = [
+  "Status: Fixing my Broken Ass Arch Linux Install",
+  "Status: Chewing Ass and Kicking Vim",
+  "Status: Centering a Div (Send Help)",
+  "Status: Watching YouTube Tutorials on How to Program for Beginners",
+];
 const randomIndex = Math.floor(Math.random() * Status.length);
 
 export default function Home() {
@@ -65,13 +69,11 @@ export default function Home() {
         </code>
       </h1>
       <Link href="/about">
-        <Button>
-          See More
-        </Button>
+        <Button>See More</Button>
       </Link>
       <h2 className="flex font-mono color-gray-500 text-sm">
         {Status[randomIndex]}
       </h2>
     </div>
-  )
+  );
 }

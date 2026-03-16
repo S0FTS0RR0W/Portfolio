@@ -8,11 +8,11 @@ interface Repo {
 //get GitHub repos
 async function getRepos() {
   // TODO: Replace 'charlie' with your actual GitHub username
-  const res = await fetch('https://api.github.com/users/S0FTS0RR0W/repos', {
-    next: { revalidate: 3600 } // Revalidate data once per hour
+  const res = await fetch("https://api.github.com/users/S0FTS0RR0W/repos", {
+    next: { revalidate: 3600 }, // Revalidate data once per hour
   });
-  
-  if (!res.ok) throw new Error('Failed to fetch projects');
+
+  if (!res.ok) throw new Error("Failed to fetch projects");
   return res.json();
 }
 
@@ -27,7 +27,12 @@ export default async function Projects() {
           <div key={repo.id} className="border p-4 rounded-lg">
             <h2 className="font-bold">{repo.name}</h2>
             <p>{repo.description}</p>
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-teal-500 transition-all group inline-block">
+            <a
+              href={repo.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-500 transition-all group inline-block"
+            >
               View on GitHub
               <div className="bg-teal-500 h-0.5 w-0 group-hover:w-full transition-all duration-500"></div>
             </a>
