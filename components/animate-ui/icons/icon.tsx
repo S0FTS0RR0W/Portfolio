@@ -123,6 +123,7 @@ function composeEventHandlers<E extends React.SyntheticEvent<unknown>>(
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: Dynamic props require any
 type AnyProps = Record<string, any>;
 
 function AnimateIcon({
@@ -206,6 +207,7 @@ function AnimateIcon({
     activeRef.current = localAnimate;
   }, [localAnimate]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Intentional - animation prop needs special handling
   React.useEffect(() => {
     if (animate === undefined) return;
     setCurrentAnimation(typeof animate === "string" ? animate : animation);
@@ -246,6 +248,7 @@ function AnimateIcon({
     else stopAnimation();
   }, [isInView, animateOnView, startAnimation, stopAnimation]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Intentional - complex animation lifecycle
   React.useEffect(() => {
     const gen = ++runGenRef.current;
     cancelledRef.current = false;
@@ -621,6 +624,7 @@ function getVariants<
   T extends Record<string, Variants>,
 >(animations: V): T {
   // eslint-disable-next-line react-hooks/rules-of-hooks
+  // biome-ignore lint/correctness/useHookAtTopLevel: This is a utility function that accesses context through a hook
   const { animation: animationType } = useAnimateIconContext();
 
   let result: T;

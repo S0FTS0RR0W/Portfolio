@@ -21,7 +21,7 @@ export default function Home() {
   const [displayText, setDisplayText] = useState("");
   const [sequenceIndex, setSequenceIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [statusIndex, setStatusIndex] = useState(0);
+  const [_statusIndex, setStatusIndex] = useState(0);
 
   useEffect(() => {
     setStatusIndex(Math.floor(Math.random() * Status.length));

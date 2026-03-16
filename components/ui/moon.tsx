@@ -66,29 +66,34 @@ const MoonIcon = forwardRef<MoonIconHandle, MoonIconProps>(
       [controls, onMouseLeave],
     );
     return (
-      <div
-        className={cn(className)}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        {...props}
-      >
-        <motion.svg
-          animate={controls}
-          fill="none"
-          height={size}
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          transition={SVG_TRANSITION}
-          variants={SVG_VARIANTS}
-          viewBox="0 0 24 24"
-          width={size}
-          xmlns="http://www.w3.org/2000/svg"
+      <>
+        {/* biome-ignore lint/a11y/useSemanticElements: Animated icon container needs div for event delegation */}
+        <div
+          className={cn(className)}
+          role="button"
+          tabIndex={0}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          {...props}
         >
-          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-        </motion.svg>
-      </div>
+          <motion.svg
+            animate={controls}
+            fill="none"
+            height={size}
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            transition={SVG_TRANSITION}
+            variants={SVG_VARIANTS}
+            viewBox="0 0 24 24"
+            width={size}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </motion.svg>
+        </div>
+      </>
     );
   },
 );

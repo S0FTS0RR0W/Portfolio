@@ -1,7 +1,6 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import * as React from "react";
 import { useEffect, useState } from "react";
 import { Moon } from "@/components/animate-ui/icons/moon";
 import { Sun } from "@/components/animate-ui/icons/sun";

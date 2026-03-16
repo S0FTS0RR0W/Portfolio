@@ -10,7 +10,7 @@ const options = {
   cMapPacked: true,
 };
 
-export default function PDFViewerClient({ fileUrl }: { fileUrl: string }) {
+export default function PDFViewerClient({ _fileUrl }: { fileUrl: string }) {
   const [numPages, setNumPages] = useState<number>();
   const [pageNumber, setPageNumber] = useState<number>(1);
 
@@ -34,6 +34,7 @@ export default function PDFViewerClient({ fileUrl }: { fileUrl: string }) {
       </Document>
       <div className="flex gap-4 mt-4 items-center">
         <button
+          type="button"
           className="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-800"
           onClick={() => setPageNumber((prev) => Math.max(prev - 1, 1))}
           disabled={pageNumber <= 1}
@@ -44,6 +45,7 @@ export default function PDFViewerClient({ fileUrl }: { fileUrl: string }) {
           Page {pageNumber} of {numPages}
         </p>
         <button
+          type="button"
           className="px-3 py-1 border rounded disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-800"
           onClick={() =>
             setPageNumber((prev) => Math.min(prev + 1, numPages || 1))

@@ -46,7 +46,7 @@ export default function GitCommits() {
     gradient.addColorStop(1, "rgba(0, 0, 0, 1)");
 
     const labels = activity.map((a) => {
-      const date = new Date(a.date + "-02"); // Use day 2 to avoid timezone issues
+      const date = new Date(`${a.date}-02`); // Use day 2 to avoid timezone issues
       return date.toLocaleDateString(undefined, {
         year: "numeric",
         month: "short",

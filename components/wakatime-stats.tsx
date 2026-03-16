@@ -45,7 +45,7 @@ export default function WakatimeStats() {
     const ctx = canvasRef.current.getContext("2d");
     if (!ctx) return;
 
-    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    const gradient: CanvasGradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, "rgba(75, 192, 192, 1)");
     gradient.addColorStop(1, "rgba(0, 0, 0, 1)");
 
@@ -60,7 +60,7 @@ export default function WakatimeStats() {
           {
             label: "Hours coded (last 7 days)",
             data: hours,
-            backgroundColor: gradient as any,
+            backgroundColor: gradient,
             borderColor: "rgba(75, 192, 192, 1)",
             borderWidth: 1,
           },
