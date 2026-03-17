@@ -123,3 +123,23 @@
     @apply bg-background text-foreground;
   }
 }
+
+.github-activity-heatmap .react-github-heatmap__calendar rect {
+  rx: 4;
+  transition:
+    transform 140ms ease,
+    filter 180ms ease;
+}
+
+.github-activity-heatmap .react-github-heatmap__calendar rect:hover {
+  filter: brightness(1.1);
+  transform: scale(1.08);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.github-activity-heatmap .react-github-heatmap__meta,
+.github-activity-heatmap .react-github-heatmap__calendar text {
+  color: hsl(var(--muted-foreground));
+  fill: hsl(var(--muted-foreground));
+}
