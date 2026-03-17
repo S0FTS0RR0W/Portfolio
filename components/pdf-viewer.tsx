@@ -10,7 +10,7 @@ const options = {
   cMapPacked: true,
 };
 
-export default function PDFViewerClient({ _fileUrl }: { fileUrl: string }) {
+export default function PDFViewerClient({ fileUrl }: { fileUrl: string }) {
   const [numPages, setNumPages] = useState<number>();
   const [pageNumber, setPageNumber] = useState<number>(1);
 
@@ -21,7 +21,7 @@ export default function PDFViewerClient({ _fileUrl }: { fileUrl: string }) {
   return (
     <div className="flex flex-col items-center">
       <Document
-        file={"./CV.pdf"}
+        file={fileUrl}
         onLoadSuccess={onDocumentLoadSuccess}
         options={options}
         onLoadError={(error) => console.log("Error loading PDF:", error)}

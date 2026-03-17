@@ -13,6 +13,28 @@ interface GitHubHeatmapResponse {
   heatmapData: HeatmapData;
 }
 
+//end user theme options
+const ThemeOptions: Record<string, Theme> = {
+  light: createCalendarTheme(
+    "#0f766e",
+    "#1f2937",
+    "hsl(210 24% 92%)",
+    "transparent",
+  ),
+  dark: createCalendarTheme(
+    "#34d399",
+    "#e6edf3",
+    "hsl(215 14% 20%)",
+    "transparent",
+  ),
+  nord: createCalendarTheme(
+    "#88c0d0",
+    "#2e3440",
+    "hsl(210 24% 92%)",
+    "transparent",
+  ),
+};
+
 export default function GitHubChart() {
   const { resolvedTheme } = useTheme();
   const [data, setData] = useState<HeatmapData | null>(null);
@@ -55,23 +77,11 @@ export default function GitHubChart() {
   }, [data]);
 
   const heatmapTheme = useMemo<Theme>(() => {
-    const isDark = resolvedTheme === "dark";
-
-    if (isDark) {
-      return createCalendarTheme(
-        "#34d399",
-        "#e6edf3",
-        "hsl(215 14% 20%)",
-        "transparent",
-      );
+    if (resolvedTheme === "dark") {
+      return ThemeOptions.dark;
     }
 
-    return createCalendarTheme(
-      "#0f766e",
-      "#1f2937",
-      "hsl(210 24% 92%)",
-      "transparent",
-    );
+    return ThemeOptions.light;
   }, [resolvedTheme]);
 
   if (error) {
