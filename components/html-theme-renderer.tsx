@@ -194,6 +194,32 @@ function highlightHtmlLine(line: string) {
   });
 }
 
+function createStableEntries(lines: string[]) {
+  const lineCounts = new Map<string, number>();
+
+  return lines.map((line) => {
+    const lineCount = (lineCounts.get(line) ?? 0) + 1;
+    lineCounts.set(line, lineCount);
+
+    let tokenOffset = 0;
+    const highlightedTokens = highlightHtmlLine(line).map((token) => {
+      const tokenKey = `${token.className}-${tokenOffset}-${token.text}`;
+      tokenOffset += token.text.length;
+
+      return {
+        ...token,
+        key: tokenKey,
+      };
+    });
+
+    return {
+      highlightedTokens,
+      key: `${line}-${lineCount}`,
+      line,
+    };
+  });
+}
+
 function formatHtml(html: string) {
   const normalized = html
     .replace(/></g, ">\n<")
@@ -252,6 +278,7 @@ export function HtmlThemeRenderer({ children }: HtmlThemeRendererProps) {
   const isHtmlTheme = theme === "html";
   const formattedHtml = rawHtml ? formatHtml(rawHtml) : "";
   const formattedLines = formattedHtml ? formattedHtml.split("\n") : [];
+  const lineEntries = createStableEntries(formattedLines);
 
   useEffect(() => {
     if (!isHtmlTheme) {
@@ -349,20 +376,14 @@ export function HtmlThemeRenderer({ children }: HtmlThemeRendererProps) {
             {formattedLines.length} lines
           </div>
           <pre className="overflow-x-auto p-4">
-            {formattedLines.map((line, index) => (
-              <div
-                key={`${index + 1}-${line}`}
-                className="grid grid-cols-[auto_1fr] gap-4"
-              >
+            {lineEntries.map((entry, index) => (
+              <div key={entry.key} className="grid grid-cols-[auto_1fr] gap-4">
                 <span className="select-none text-right text-muted-foreground/70">
                   {index + 1}
                 </span>
                 <code className="whitespace-pre-wrap wrap-break-word">
-                  {highlightHtmlLine(line).map((token, tokenIndex) => (
-                    <span
-                      key={`${index + 1}-${tokenIndex}-${token.text}`}
-                      className={token.className}
-                    >
+                  {entry.highlightedTokens.map((token) => (
+                    <span key={token.key} className={token.className}>
                       {token.text}
                     </span>
                   ))}
