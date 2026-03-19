@@ -13,22 +13,22 @@ export default function BurgerMenu() {
       {/* Burger only visible on small screens */}
       <Button
         variant="ghost"
-        className="p-2 flex flex-col gap-[6px] group block md:hidden"
+        className="p-2 flex flex-col gap-1.5 group md:hidden"
         onClick={handleClick}
       >
         <span
-          className={`block h-[3px] w-6 bg-white rounded transition-all duration-300
-                        ${isOpen ? "rotate-45 translate-y-[9px]" : ""}
+          className={`block h-0.75 w-6 bg-white rounded transition-all duration-300
+                        ${isOpen ? "rotate-45 translate-y-2.25" : ""}
                     `}
         />
         <span
-          className={`block h-[3px] w-6 bg-white rounded transition-all duration-300
+          className={`block h-0.75 w-6 bg-white rounded transition-all duration-300
                         ${isOpen ? "opacity-0" : "opacity-100"}
                     `}
         />
         <span
-          className={`block h-[3px] w-6 bg-white rounded transition-all duration-300
-                        ${isOpen ? "-rotate-45 -translate-y-[9px]" : ""}
+          className={`block h-0.75 w-6 bg-white rounded transition-all duration-300
+                        ${isOpen ? "-rotate-45 -translate-y-2.25" : ""}
                     `}
         />
       </Button>
