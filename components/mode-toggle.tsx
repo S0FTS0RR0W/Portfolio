@@ -1,5 +1,6 @@
 "use client";
 
+import { Code } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Moon } from "@/components/animate-ui/icons/moon";
@@ -35,6 +36,10 @@ export function ModeToggle() {
         return (
           <MonitorCheckIcon className="h-[1.2rem] w-[1.2rem] transition-all duration-300 group-hover:animate-pulse" />
         );
+      case "html":
+        return (
+          <Code className="h-[1.2rem] w-[1.2rem] transition-all duration-300 group-hover:animate-pulse" />
+        );
       default:
         return <Sun className="h-[1.2rem] w-[1.2rem]" />;
     }
@@ -65,6 +70,9 @@ export function ModeToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           System
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("html")}>
+          HTML
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

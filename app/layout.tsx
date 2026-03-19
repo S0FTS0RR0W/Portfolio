@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { HtmlThemeRenderer } from "@/components/html-theme-renderer";
 import { ThemeProvider } from "@/components/theme-provider";
 import BurgerMenu from "@/components/ui/burger-menu";
 import { NavigationMenu } from "@/components/ui/navigation-menu";
@@ -30,12 +31,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NavigationMenu />
-          <BurgerMenu />
-          <main className="flex-1">{children}</main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          themes={["light", "dark", "system", "html"]}
+        >
+          <div className="site-chrome">
+            <NavigationMenu />
+            <BurgerMenu />
+          </div>
+          <main className="flex-1">
+            <HtmlThemeRenderer>{children}</HtmlThemeRenderer>
+          </main>
         </ThemeProvider>
-        <footer className="flex h-20 flex-col items-center justify-center text-center text-4x1 font-mono w-full bg-gray-800 text-white">
+        <footer className="site-chrome flex h-20 flex-col items-center justify-center text-center text-4x1 font-mono w-full bg-gray-800 text-white">
           <p>Charlie Brown © 2026</p>
           <p>Powered By MtnDEW</p>
         </footer>
